@@ -41,6 +41,10 @@ a { text-decoration: none; color: #000; }
 			#page-tree li div.item a.link { min-width: 60%; max-width:80%; overflow:hidden; padding-right:20px; }
 				#page-tree li div.item a.link .page-icon { display: inline-block; width: 16px; height: 16px; vertical-align: text-bottom; background: transparent none no-repeat 0 0; }
 				
+				#page-tree li div.item .tags { position:absolute; right:55px; top: 0; display:none; font-size:12px; }
+				#page-tree li div.item:hover .tags { display:block; }
+					#page-tree li div.item .tags { opacity:.33; }
+
 				#page-tree li div.item .tools { position:absolute; right:30px; top: 0; }
 					#page-tree li div.item		 .tools .dropdown-toggle { opacity:0; color:#666; transition: opacity .5s ease-in-out; text-decoration:none; }
 					#page-tree li div.item:hover .tools .dropdown-toggle { opacity:1; }
@@ -122,17 +126,17 @@ a { text-decoration: none; color: #000; }
 	
 		#menu a:hover { text-decoration: none; }
 
-#menu.draft { background-color: #FF8822; }
+/*#menu.draft { background-color: #FF8822; }
 	#menu.draft > ul > li .page-action { border-left-color: #FF9933 }
 	#menu.draft > ul > li .page-action:hover,
 	#menu.draft > ul > li .dropdown-toggle:hover,
 	#menu.draft > ul > li.open .dropdown-toggle { background-color:#FF9933 }
 
-#menu.unpublished { background-color: #E10C02; }
-	#menu.unpublished > ul > li .page-action { border-left-color: #E10C02 }
+#menu.unpublished { background-color: #EE6600; }
+	#menu.unpublished > ul > li .page-action { border-left-color: #EE6600 }
 	#menu.unpublished > ul > li .page-action:hover,
 	#menu.unpublished > ul > li .dropdown-toggle:hover,
-	#menu.unpublished > ul > li.open .dropdown-toggle { background-color:#E11C12 }
+	#menu.unpublished > ul > li.open .dropdown-toggle { background-color:#E11C12 }*/
 
 #menu .add,
 #menu .versions { max-height:400px; overflow-y:auto; overflow-x:hidden; }
@@ -143,9 +147,14 @@ a { text-decoration: none; color: #000; }
 #menu .versions li.waiting a { border-left-color:#FF8822; }
 #menu .versions li.published a { border-left-color:#d9f0f9; }
 #menu .versions li.unpublished a { border-left-color:#FF3300; }
-
+#menu .page-versions .draft b { color: #FF8822 }
+#menu .page-versions .waiting b { color: #FF8822 }
+#menu .page-versions .published b { color: limegreen }
+#menu .page-versions .unpublished b { color: #EE6600 }
+#menu .page-versions .deleted b { color: #EE6600 }
 
 .info-menu { position: absolute; top: 100%; right: 0; z-index: 100; display: none; float: left; min-width: 160px; padding: 5px; list-style: none; background-color: #ffffff; margin:0; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); font-size:14px; text-transform:none; }
+#menu .info-menu a { color:#18a0de }
 .info-menu.open { display:block; }
 	.info-menu.dl-horizontal dt { width: 140px; }
 	.info-menu.dl-horizontal dd { margin-left: 150px; }
@@ -201,27 +210,30 @@ a[disabled=disabled]:hover {
 .dropdown-menu:after { display:none !important; }
 
 
-@media (max-width: 979px) {
-	#menu > ul > li > .page-action {
-		width:44px;
-		overflow:hidden;
+@media (max-width: 919px) {
+	#menu > ul > li > .page-action,
+	#menu > ul > li > .page-action span {
+		font-size:0;
 	}
 }
 
 .n2-blue,.blue { color:blue; }
 .n2-darkslateblue { color:darkslateblue; }
 .n2-brown { color:brown; }
+.n2-orange { color:orange; }
 .n2-red,.red { color:red; }
 .n2-green,.green { color:red; }
 .n2-yellow,.yellow { color:yellow; }
 .n2-gold { color:gold; }
 .n2-magenta,.magenta { color:magenta; }
 .n2-silver,.silver { color:silver; }
-.n2-shadow,.shadow { text-shadow: 3px 3px #999; }
+.n2-shadow-000 { text-shadow: 3px 3px #000; }
+.n2-shadow-999,.shadow { text-shadow: 3px 3px #999; }
+.n2-shadow-fff { text-shadow: 3px 3px #fff; }
 .n2-opaque,.opaque { opacity: .5; }
-.n2-tilted90,.tilted90 { display:inline-block !important; -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); }
-.n2-tilted180,.tilted180 { display:inline-block !important; -webkit-transform: rotate(180px); -moz-transform: rotate(180px); -ms-transform: rotate(180px); -o-transform: rotate(180px); transform: rotate(180px); }
-.n2-tilted270,.tilted270 { display:inline-block !important; -webkit-transform: rotate(270px); -moz-transform: rotate(270px); -ms-transform: rotate(270px); -o-transform: rotate(270px); transform: rotate(270px); }
+.n2-tilted90 { display:inline-block !important; -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); }
+.n2-tilted180 { display:inline-block !important; -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -ms-transform: rotate(180deg); -o-transform: rotate(180deg); transform: rotate(180deg); }
+.n2-tilted270 { display:inline-block !important; -webkit-transform: rotate(270deg); -moz-transform: rotate(270deg); -ms-transform: rotate(270deg); -o-transform: rotate(270deg); transform: rotate(270deg); }
 
 /* MULTI-LEVEL DROPDOWNS FOR BOOTSTRAP */
 

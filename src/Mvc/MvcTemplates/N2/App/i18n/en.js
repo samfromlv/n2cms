@@ -1,8 +1,17 @@
 ﻿{
 	"i18n": { language: "en" },
-	"loading": { text: "Loading..." },
+	"loading": { "text": "Loading..." },
 	"branch": {
-		"noname": "(no name)"
+		"noname": "(no name)",
+		"tags": {
+			"authority": "Site: ",
+			"hidden": "Hidden",
+			"language": "Language: ",
+			"locked": "Access restrictions",
+			"zone": "In zone: ",
+			"draft": "Has draft: ",
+			"unpublished": "Unpublished"
+		}
 	},
 	"footer": {
 		"close": { "title": "Dismiss" }
@@ -18,6 +27,10 @@
 		"parts": {
 			"show": { "text": " Show parts" },
 			"hide": { "text": " Hide parts" }
+		},
+		"scope": {
+			"here": "Scope from here",
+			"clear": "Clear scope"
 		}
 	},
 	"info": {
@@ -37,7 +50,7 @@
 		"toggle": { "title": "Display translatable languages" }
 	},
 	"schedule": {
-		"action": { text: " Schedule" },
+		"action": { "text": " Schedule" },
 		"heading": "Schedule publishing",
 		"dismiss": { "title": "Dismiss" },
 		"question": "When should this content be published?",
@@ -47,7 +60,7 @@
 		"close": { "text": "Close" }
 	},
 	"search": {
-		"query": { "placeholder": "Search" },
+		"query": { "placeholder": "Search" },	
 		"clear": { "title": "Clear search" },
 		"noname": "(no name)",
 		"nohits": "No hits"
@@ -58,11 +71,11 @@
 	},
 	"versions": {
 		"action": { "text": "Versions", "title": "Overview versions" },
-		"draft": "Draft",
-		"waiting": "Waiting",
-		"published": "Published",
-		"unpublished": "Unpublished",
-		"deleted": "Deleted",
+		"draft": { "text": " Draft" },
+		"waiting": { "text": " Scheduled" },
+		"published": { "text": " Published" },
+		"unpublished": { "text": " Unpublished" },
+		"deleted": { "text": " Deleted" },
 		"toggle": { "title": "Display page versions" },
 		"states": {
 			"published": "(published version)",
@@ -72,27 +85,30 @@
 		}
 	},
 	"dashboard": { text: "Dashboard" },
-	"pages": { text: "Pages" },
-	"sitesettings": { text: "Site Settings", title: "Edit site settings" },
-	"templates": { text: "Templates", title: "Show predefined templates with content" },
-	"wizards": { title: "Wizards", title: "Show predefined types and locations for content" },
-	"users": { title: "Users", title: "Manage users" },
-	"export": { title: "Export", title: "Export content to file" },
-	"import": { title: "Import", title: "Import content from file" },
-	"signout": { title: "Sign out", title: "Sign out {{Context.User.Name}}" },
+	"pages": { "text": "Pages" },
+	"sitesettings": { "text": "Site Settings", title: "Edit site settings" },
+	"templates": { "text": "Templates", title: "Show predefined templates with content" },
+	"wizards": { text: "Wizards", title: "Show predefined types and locations for content" },
+	"users": { text: "Users", title: "Manage users" },
+	"roles": { text: "Roles", title: "Manage roles" },
+	"export": { text: "Export", title: "Export content to file" },
+	"import": { text: "Import", title: "Import content from file" },
 	"preview": { title: "Fullscreen" },
-	"fullscreen": { text: "Fullscreen" },
-	"viewdrafts": { text: "View latest drafts" },
-	"viewpublished": { text: "View published versions" },
-	"links": { text: "Link connections" },
-	"edit": { text: "Edit" },
-	"editdetails": { text: "Edit details" },
-	"organize": { text: "Organize parts" },
-	"security": { text: "Manage security" },
-	"bulk": { text: "Bulk editing" },
-	"throw": { text: "Throw", title: "Move selected item to trash" },
-	"publish": { text: "Publish" },
-	"unpublish": { text: "Unpublish" },
-	"frameaction": { text: "" },
-	"close": { text: "Close" }
+	"fullscreen": { "text": "Fullscreen" },
+	"viewdrafts": { "text": "View latest drafts" },
+	"viewpublished": { "text": "View published versions" },
+	"links": { "text": "Link connections" },
+	"edit": { "text": "Edit" },
+	"editdetails": { "text": "Edit details" },
+	"organize": { "text": "Organize parts" },
+	"security": { "text": "Manage security" },
+	"bulk": { "text": "Bulk editing" },
+	"delete": { "text": "Delete", title: "Move selected item to trash" },
+	"publish": { "text": "Publish" },
+	"unpublish": { "text": "Unpublish" },
+	"frameaction": { "text": "" },
+	"close": { "text": "Close" },
+	"me": { },
+	"password": { text: "Change password" },
+	"signout": { text: "Sign out", title: "Sign out {{Context.User.Name}}" },
 }

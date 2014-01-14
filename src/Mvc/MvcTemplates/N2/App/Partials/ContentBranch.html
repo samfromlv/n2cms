@@ -3,12 +3,16 @@
 	
 	<a href="#" ng-click="toggle(node)" class="toggle"><b class="toggle-expand n2-icon-chevron-right"></b><b class="toggle-collapse icon-chevron-up"></b><b class="toggle-loading icon-repeat"></b></a>
 
+	<div class="tags">
+		<b ng-repeat="tag in tags" title="{{tag.ToolTip}}" class="{{tag.IconClass}}"></b>
+	</div>
+
 	<div class="tools dropdown">
 		<a href='#' ng-click="ContextMenu.show(node)" class='dropdown-toggle' data-toggle="dropdown"><b class="n2-icon-reorder"></b></a>
 		<ul ng-include src="ContextMenu.node == node && Context.Partials.ContextMenu" class="dropdown-menu pull-right"></ul>
 	</div>
 
-	<a href='{{appendPreviewOptions(node.Current.PreviewUrl)}}' ng-click="select(node)" target='preview' class="link" title="{{node.Current.ToolTip}}">
+	<a href='{{appendPreviewOptions(node.Current.PreviewUrl)}}' ng-click="nodeClicked(node)" target='preview' class="link" title="{{node.Current.ToolTip}}">
 		<b class='ico' ng-show='node.Current.IconClass && !node.Current.IconUrl' ng-class='node.Current.IconClass || "ico-custom"'></b>
 		<span class='page-icon' ng-show='node.Current.IconUrl' x-background-image='node.Current.IconUrl'></span>
 		{{node.Current.Title || ('(no name)' | translate:'branch.noname')}}
@@ -20,7 +24,7 @@
 </ul>
 
 <ul class="targettable" ng-class="{ collapsed: !node.Expanded }" x-sortable="{ move: sort.move, sort: sort.sort }">
-	<li class="node" ng-repeat="child in node.Children" sortable-path="{{child.Current.Path}}" ng-controller="BranchCtrl" ng-class="{ active: child == Context.SelectedNode, expanded: child.Expanded, collapsed: child.HasChildren && !child.Expanded }" ng-include src="'App/Partials/ContentBranch.html'"></li>
+	<li class="node" ng-repeat="child in node.Children" sortable-path="{{child.Current.Path}}" ng-controller="BranchCtrl" ng-class="{ active: child == Context.SelectedNode, expanded: child.Expanded, collapsed: (child.HasChildren || child.Parts) && !child.Expanded }" ng-include src="'App/Partials/ContentBranch.html'"></li>
 </ul>
 
 <a class="tree-pager" ng-show="node.IsPaged && node.Expanded" href="#" ng-click="loadRemaining(node)">
