@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
-		<id>N2CMS.Management.NoZip</id>
+		<id>YaKlass.N2CMS.Management.NoZip</id>
 		<version>{Version}</version>
 		<title>N2CMS Management (Standard)</title>
 		<authors>Cristian Libardo</authors>
@@ -16,8 +16,8 @@
 		<tags>N2 CMS</tags>
 		<dependencies>
 			<group>
-				<dependency id="N2CMS.Library" version="{Version}" />
-				<dependency id="N2CMS.Config" version="2.6.2" />
+				<dependency id="YaKlass.N2CMS.Library" version="{Version}" />
+				<dependency id="YaKlass.N2CMS.Config" version="2.6.2" />
 			</group>
 		</dependencies>
 	</metadata>

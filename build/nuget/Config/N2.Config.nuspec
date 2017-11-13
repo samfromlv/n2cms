@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
-		<id>N2CMS.Config</id>
+		<id>YaKlass.N2CMS.Config</id>
 		<version>2.6.2</version>
 		<title>N2CMS Configuration</title>
 		<authors>Cristian Libardo</authors>

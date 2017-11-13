@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>N2CMS.Management.Collaboration</id>
+    <id>YaKlass.N2CMS.Management.Collaboration</id>
     <version>{Version}</version>
     <title>N2 CMS Collaboration Functionality</title>
     <authors>Cristian Libardo</authors>
@@ -15,7 +15,7 @@
     <language>en-US</language>
     <tags>N2 CMS, Collaboration, Messages, Notifications, Notes</tags>
 		<dependencies>
-			<dependency id="N2CMS.Management" version="{Version}" />
+			<dependency id="YaKlass.N2CMS.Management" version="{Version}" />
 		</dependencies>
 	</metadata>
 </package>

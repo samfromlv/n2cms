@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
-		<id>N2CMS.ReusableParts</id>
+		<id>YaKlass.N2CMS.ReusableParts</id>
 		<version>{Version}</version>
 		<title>N2CMS Reusable Parts</title>
 		<authors>Benjamin Herila</authors>
@@ -15,7 +15,7 @@
 		<language>en-US</language>
 		<tags>N2 CMS</tags>
 		<dependencies>
-			<dependency id="N2CMS.Library" version="{Version}" />
+			<dependency id="YaKlass.N2CMS.Library" version="{Version}" />
 		</dependencies>
 	</metadata>
 </package>
