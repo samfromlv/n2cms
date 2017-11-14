@@ -375,9 +375,9 @@
 
 	<Target Name="Push-NuGet-Config" DependsOnTargets="Build-NuGet">
 		<ItemGroup>
-			<nugetConfigPackages Include="$(DeployFolder)\N2CMS.Config.*.nupkg" />
+			<nugetConfigPackages Include="$(DeployFolder)\*N2CMS.Config.*.nupkg" />
 		</ItemGroup>
 		<!--<Message Text="$(BuildFolder)\lib\NuGet.exe Push %(nugetConfigPackages.Identity)" />-->
-		<Exec Command="$(BuildFolder)\lib\NuGet.exe Push %(nugetConfigPackages.Identity)" ContinueOnError="true" />
+		<Exec Command="$(BuildFolder)\lib\NuGet.exe Push %(nugetConfigPackages.Identity) -Source http://yklnuget.azurewebsites.net/nuget" ContinueOnError="true" />
 	</Target>
 </Project>
