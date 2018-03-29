@@ -46,7 +46,7 @@
     var selected = '<%= Selection.SelectedItem.Path %>';
 	var refreshFrames = function(){
 		<%= Page.GetRefreshFramesScript(Selection.SelectedItem, N2.Edit.ToolbarArea.Navigation, true) %>;
-		window.location.reload();
+		window.location.href = window.location.href;
 	};
     
 	$(function(){
