@@ -29,7 +29,7 @@ namespace N2.Management.Content.Export
 
             try
             {
-                IImportRecord record = Engine.Resolve<Importer>().Read(UploadedFilePath);
+                IImportRecord record = Read(Engine.Resolve<Importer>());
                 importedItems.CurrentItem = record.RootItem;
                 rptAttachments.DataSource = record.Attachments;
                 if (Selection.SelectedItem.Children.FindNamed(record.RootItem.Name) != null)
@@ -41,11 +41,7 @@ namespace N2.Management.Content.Export
             }
             catch (WrongVersionException)
             {
-                using (Stream s = File.OpenRead(UploadedFilePath))
-                {
-                    N2XmlReader xr = new N2XmlReader(N2.Context.Current);
-                    importedItems.CurrentItem = xr.Read(s);
-                }
+                importedItems.CurrentItem = ReadWrongVersion();
             }
 
             DataBind();
@@ -58,17 +54,35 @@ namespace N2.Management.Content.Export
             IImportRecord record;
             try
             {
-                record = importer.Read(UploadedFilePath);
+                record = Read(importer);
                 ShowErrors(record);
             }
             catch (WrongVersionException)
             {
-                N2XmlReader xr = new N2XmlReader(N2.Context.Current);
-                ContentItem item = xr.Read(File.OpenRead(UploadedFilePath));
+                ContentItem item = ReadWrongVersion();
                 record = CreateRecord(item);
             }
 
             Import(importer, record);
+        }
+
+        private IImportRecord Read(Importer importer)
+        {
+            var fs = Engine.Resolve<IFileSystem>();
+            using (var s = fs.OpenFile(UploadedFilePath, readOnly: true))
+            {
+                return importer.Read(s, UploadedFilePath);
+            }
+        }
+
+        private ContentItem ReadWrongVersion()
+        {
+            var fs = Engine.Resolve<IFileSystem>();
+            N2XmlReader xr = new N2XmlReader(N2.Context.Current);
+            using (var s = fs.OpenFile(UploadedFilePath, readOnly: true))
+            {
+                return xr.Read(s);
+            }
         }
 
         private static IImportRecord CreateRecord(ContentItem item)
@@ -108,8 +122,11 @@ namespace N2.Management.Content.Export
             }
             finally
             {
-                if (File.Exists(UploadedFilePath))
-                    File.Delete(UploadedFilePath);
+                var fs = Engine.Resolve<IFileSystem>();
+                if (!String.IsNullOrEmpty(UploadedFilePath) && fs.FileExists(UploadedFilePath))
+                {
+                    fs.DeleteFile(UploadedFilePath);
+                }
             }
         }
 

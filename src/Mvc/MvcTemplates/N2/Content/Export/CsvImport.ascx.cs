@@ -11,6 +11,8 @@ using N2.Definitions;
 using N2.Edit.Web.UI.Controls;
 using N2.Persistence;
 using N2.Edit.Web;
+using N2.Edit.FileSystem;
+using System.Text;
 
 namespace N2.Management.Content.Export
 {
@@ -115,6 +117,8 @@ namespace N2.Management.Content.Export
                 Engine.Persister.Save(importedItem);
             }
             Refresh(Selection.SelectedItem);
+
+            DeleteFile(tempFile);
         }
 
         protected void ddlTypes_OnSelectedIndexChanged(object sender, EventArgs args)
@@ -167,8 +171,23 @@ namespace N2.Management.Content.Export
 
         private IEnumerable<CsvRow> ParseRows(string tempFile, out char separator)
         {
-            separator = Parser.GuessBestSeparator(() => File.OpenText(tempFile), ',', '\t', ';');
-            return Parser.Parse(separator, File.OpenText(tempFile)).ToList();
+            var fs = Engine.Resolve<IFileSystem>();
+            using (var s = fs.OpenFile(tempFile, readOnly: true))
+            {
+                separator = Parser.GuessBestSeparator(() => new StreamReader(s, Encoding.UTF8, true, 1024, leaveOpen: true), ',', '\t', ';');
+                s.Position = 0;
+                using (var sr = new StreamReader(s, Encoding.UTF8, true, 1024, leaveOpen: true))
+                {
+                    return Parser.Parse(separator, sr).ToList();
+                }
+            }
+                
+        }
+
+        private void DeleteFile(string tempFile)
+        {
+            var fs = Engine.Resolve<IFileSystem>();
+            fs.DeleteFile(tempFile);
         }
 
         protected class EditableReference

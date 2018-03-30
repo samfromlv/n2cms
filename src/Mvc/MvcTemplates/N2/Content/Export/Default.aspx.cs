@@ -56,18 +56,18 @@ namespace N2.Edit.Export
 
         protected void btnVerify_Click(object sender, EventArgs e)
         {
-            var tempFile = Engine.Resolve<TemporaryFileHelper>()
-                .GetTemporaryFileName(System.IO.Path.GetExtension(fuImport.PostedFile.FileName));
-            fuImport.PostedFile.SaveAs(tempFile);
+            var fs = Engine.Resolve<IFileSystem>();
+            var tempFilePath = String.Concat("/temp/",Guid.NewGuid().ToString("N"), System.IO.Path.GetExtension(fuImport.PostedFile.FileName));
+            fs.WriteFile(tempFilePath, fuImport.PostedFile.InputStream);
 
-            if (fuImport.PostedFile.FileName.EndsWith(".csv"))
+            if (tempFilePath.EndsWith(".csv"))
             {
-                csv.ContinueWithImport(tempFile);
+                csv.ContinueWithImport(tempFilePath);
                 uploadFlow.ActiveViewIndex = 2;
             }
             else
             {
-                xml.ContinueWithImport(tempFile);
+                xml.ContinueWithImport(tempFilePath);
                 uploadFlow.ActiveViewIndex = 1;
             }
         }
