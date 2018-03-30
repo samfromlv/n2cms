@@ -10,10 +10,11 @@
 </asp:Content>
 <asp:Content ID="ct" ContentPlaceHolderID="Toolbar" runat="server">
     <edit:buttongroup cssclass="btn-primary" runat="server" onclientclick="return !n2ctx.isFlagged('ShutdownEditing') || confirm('Editing is currently disabled. If you continue right now changes may be lost. Do you want to continue?')">
-		<asp:LinkButton ID="btnSavePublish" data-icon-class="fa fa-play-circle" 
+		<asp:Button ID="btnSavePublish" data-icon-class="fa fa-play-circle" 
 			OnCommand="OnPublishCommand" runat="server" 
 			CssClass="command iconed publish" 
-			meta:resourceKey="btnSave">Save and publish</asp:LinkButton>
+            Text="Save and publish"
+			meta:resourceKey="btnSave"></asp:Button>
 
 		<asp:LinkButton ID="btnPreview" data-icon-class="fa fa-eye" OnCommand="OnPreviewCommand" runat="server" CssClass="command plain iconed preview"
 			meta:resourceKey="btnPreview">Save and preview</asp:LinkButton>
@@ -56,7 +57,7 @@
 				    <n2:DatePicker Label-Text="When should this content be published" ID="dpFuturePublishDate" runat="server" meta:resourceKey="dpFuturePublishDate" />
 			    </div>
 			    <div class="modal-footer">
-				    <asp:Button ID="btnSavePublishInFuture" Text="OK" OnCommand="OnSaveFuturePublishCommand" CssClass="btn btn-primary" runat="server" meta:resourceKey="btnSavePublishInFuture" />
+				    <asp:LinkButton ID="btnSavePublishInFuture" Text="OK" OnCommand="OnSaveFuturePublishCommand" CssClass="btn btn-primary" runat="server" meta:resourceKey="btnSavePublishInFuture" />
 				    <asp:HyperLink ID="hlCancelSavePublishInFuture" NavigateUrl="javascript:void(0);" runat="server" CssClass="btn cancel" meta:resourceKey="hlCancelSavePublishInFuture">Close</asp:HyperLink>
 			    </div>
 		    </div>
