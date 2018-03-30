@@ -44,7 +44,7 @@ namespace N2.Management.Files.FileSystem.Pages
 
         private static bool TryGetSeparatorAndDotIndex(string fileName, out int separatorIndex, out int dotIndex)
         {
-            separatorIndex = fileName.LastIndexOf(ImagesUtility.Separator[0]);
+            separatorIndex = fileName.LastIndexOf(ImagesUtility.Separator);
             dotIndex = fileName.LastIndexOf('.');
 
             return separatorIndex >= 0 && separatorIndex < dotIndex;

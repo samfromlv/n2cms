@@ -42,7 +42,7 @@ namespace N2.Web.Drawing
         }
 
         /// <summary>Separator between the size suffix and the file name.</summary>
-        public const string Separator = "_";
+        public const string Separator = "_____";
 
         /// <summary>Gets the path of a resized version of the image, if it exists, otherwise the given image url.</summary>
         /// <param name="url">The base url of an image.</param>
