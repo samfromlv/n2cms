@@ -47,7 +47,7 @@ namespace N2.Edit.FileSystem
 
             directories = dir.GetDirectories();
             files = dir.GetFiles();
-            
+
             rptDirectories.DataSource = directories;
             rptFiles.DataSource = files;
             DataBind();
@@ -75,8 +75,17 @@ namespace N2.Edit.FileSystem
 
         protected string ImageBackgroundStyle(string url)
         {
-            if(ImagesUtility.IsImagePath(url))
-                return string.Format("background-image:url({0})", N2.Edit.Web.UI.Controls.ResizedImage.GetResizedImageUrl(url, 100, 100, N2.Web.Drawing.ImageResizeMode.Fit));
+            if (ImagesUtility.IsImagePath(url))
+            {
+                if (ImagesUtility.ImageCanBeResized(url))
+                {
+                    return string.Format("background-image:url({0})", N2.Edit.Web.UI.Controls.ResizedImage.GetResizedImageUrl(url, 100, 100, N2.Web.Drawing.ImageResizeMode.Fit));
+                }
+                else
+                {
+                    return string.Format("background-image:url({0})", url);
+                }
+            }
             else
                 return "";
         }

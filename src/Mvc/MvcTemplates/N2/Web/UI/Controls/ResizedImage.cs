@@ -27,6 +27,7 @@ namespace N2.Edit.Web.UI.Controls
         {
             if (string.IsNullOrEmpty(ImageUrl))
                 return;
+
             if (!ImagesUtility.IsImagePath(ImageUrl))
                 return;
 
@@ -52,9 +53,13 @@ namespace N2.Edit.Web.UI.Controls
         public static string GetResizedImageUrl(string imageUrl, double width, double height, ImageResizeMode mode)
         {
             string fileExtension = VirtualPathUtility.GetExtension(Url.PathPart(imageUrl));
-
             bool isAlreadyImageHandler = string.Equals(fileExtension, ".ashx", StringComparison.OrdinalIgnoreCase);
             if (isAlreadyImageHandler) return Url.ToAbsolute(imageUrl);
+
+            if (!ImagesUtility.ImageCanBeResized(imageUrl))
+            {
+                return Url.ToAbsolute(imageUrl);
+            }
 
             Url url = ImageHandlerUrl.SetQueryParameter("img", N2.Context.Current.ManagementPaths.ResolveResourceUrl(imageUrl));
             if (width > 0) url = url.SetQueryParameter("w", (int)width);

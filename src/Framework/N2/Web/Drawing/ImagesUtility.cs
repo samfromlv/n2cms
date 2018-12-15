@@ -25,6 +25,23 @@ namespace N2.Web.Drawing
                 case ".png":
                 case ".tiff":
                 case ".tif":
+                case ".svg":
+                    return true;
+            }
+            return false;
+        }
+
+        public static bool ImageCanBeResized(string imageUrl)
+        {
+            string fileExtension = VirtualPathUtility.GetExtension(Url.PathPart(imageUrl));
+            switch (fileExtension.ToLower())
+            {
+                case ".gif":
+                case ".jpg":
+                case ".jpeg":
+                case ".png":
+                case ".tiff":
+                case ".tif":
                     return true;
             }
             return false;
@@ -151,6 +168,7 @@ namespace N2.Web.Drawing
                     case ".tif":
                     case ".tiff":
                     case ".jpeg":
+                    case ".svg":
                         return ExtensionGroups.Images;
                     case ".pdf":
                         return ExtensionGroups.Pdf;

@@ -40,7 +40,7 @@ namespace N2.Web.Drawing
                     break;
             }
 
-            if (ImagesUtility.IsImagePath(imageUrl) == true)
+            if (ImagesUtility.IsImagePath(imageUrl) && ImagesUtility.ImageCanBeResized(imageUrl))
             {
                 IFileSystem fs = N2.Context.Current.Resolve<IFileSystem>();
                 if (fs.FileExists(imageUrl))

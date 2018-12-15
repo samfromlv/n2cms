@@ -134,7 +134,7 @@ namespace N2.Edit.Navigation
 
         public static List<FileReducedListModel> GetFileReducedList(List<File> files, Management.Files.FileSystem.Pages.ImageSizeCache imageSizes, string exts = "", string fsRootPath = "")
         {
-            var regIsImage = new Regex(@"^.*\.(jpg|jpeg|gif|png)$", RegexOptions.IgnoreCase);
+            var regIsImage = new Regex(@"^.*\.(jpg|jpeg|gif|png|svg)$", RegexOptions.IgnoreCase);
 
             var ret = files.Select(d => new FileReducedListModel
             {
